@@ -1,3 +1,6 @@
+#BBO update to the original fork
+add File Type into lwip call
+
 # auto-rotate
 Auto rotate JPEG images based on their EXIF Orientation tag. Promise based API.
 
