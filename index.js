@@ -34,8 +34,13 @@ exports.exifFromFile = function(path) {
 exports.autoRotateFile = function(source, destination) {
     return this.exifFromFile(source)
     .then(function(exif) {
+
         return new Promise(function(resolve, reject) {
-            lwip.open(source, function(err, image) {
+
+            console.log('autoRotateFile',exif.tags)
+
+            //BBO add File Type into lwip call
+            lwip.open(source, exif.tags.FileTypeExtension, function(err, image) {
                 if( err ) return reject(err);
 
                 var rotatedImage = rotate(exif.tags.Orientation, image.batch());
